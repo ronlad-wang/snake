@@ -3,6 +3,7 @@ import snake.InputSource.KeyboardInputSource;
 import snake.TileEngine.*;
 
 public class Main {
+    public static int[] snakeLocation;
     public static void main(String[] arg) {
         TETile[][] worldMap = new TETile[10][10];
         for(int i = 0; i < 10; i++) {
@@ -11,14 +12,24 @@ public class Main {
             }
         }
         TERenderer rend = new TERenderer();
+        KeyboardInputSource keyboardsrc = new KeyboardInputSource();
+        snake s = new snake(keyboardsrc);
+
+        snakeLocation = s.getLocation();
+        worldMap[snakeLocation[0]][snakeLocation[1]] = Tileset.AVATAR;
+
         rend.initialize(20, 20, 5, 5);
         rend.renderFrame(worldMap);
 
-        KeyboardInputSource keyboardsrc = new KeyboardInputSource();
 
 
         while(true) {
-            keyboardsrc.getNextKey();
+            int[] newLocation = s.move();
+            System.out.println(newLocation[0] + ", " + newLocation[1]);
+            worldMap[snakeLocation[0]][snakeLocation[1]] = Tileset.FLOOR;
+            worldMap[newLocation[0]][newLocation[1]] = Tileset.AVATAR;
+            snakeLocation = newLocation;
+            rend.renderFrame(worldMap);
         }
     }
 }
