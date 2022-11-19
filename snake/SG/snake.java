@@ -1,14 +1,17 @@
 package snake.SG;
 
 import snake.InputSource.KeyboardInputSource;
+import snake.queue.queue;
 
 import java.util.Random;
 
 public class snake {
     public int x;
     public int y;
+    public int snakeSize = 9;
     public int MAP_MAX_SIZE = 10;
     public KeyboardInputSource src;
+
 
     public snake(KeyboardInputSource kis) {
         Random rand = new Random();

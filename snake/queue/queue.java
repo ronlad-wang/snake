@@ -50,6 +50,7 @@ public class queue implements Queue{
         return temp;
     }
 
+
     @Override
     public boolean add(Object o) {
         Node tempNode = new Node(o);
@@ -74,6 +75,10 @@ public class queue implements Queue{
     @Override
     public Object peek() {
         return firstNode.next.item;
+    }
+
+    public Object peekLast() {
+        return lastNode.item;
     }
 
 
