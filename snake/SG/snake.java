@@ -30,24 +30,28 @@ public class snake {
         char c = src.getNextKey();
         switch(c) {
             case 'W':
-                if(y < MAP_MAX_SIZE-1) {
-                    y += 1;
+                if(y == MAP_MAX_SIZE-1) {
+                    return new int[]{-1, -1};
                 }
+                y += 1;
                 break;
             case 'A':
-                if(x > 0) {
-                    x -= 1;
+                if(x == 0) {
+                    return new int[]{-1, -1};
                 }
+                x -= 1;
                 break;
             case 'S':
-                if(y > 0) {
-                    y -= 1;
+                if(y == 0) {
+                    return new int[]{-1, -1};
                 }
+                y -= 1;
                 break;
             case 'D':
-                if(x < MAP_MAX_SIZE-1) {
-                    x += 1;
+                if(x == MAP_MAX_SIZE-1) {
+                    return new int[]{-1, -1};
                 }
+                x += 1;
                 break;
         }
         return new int[]{x ,y};

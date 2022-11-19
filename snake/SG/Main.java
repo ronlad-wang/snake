@@ -32,6 +32,11 @@ public class Main {
         //temporary code to test how the snake moves
         while(true) {
             int[] newLocation = s.move();
+            if(newLocation[0] == -1) {
+                failState();
+                break;
+            }
+
             System.out.println(newLocation[0] + ", " + newLocation[1]);
             snakeLocations.add(newLocation);
             if(s.snakeSize < snakeLocations.size()) {
@@ -42,5 +47,9 @@ public class Main {
             worldMap[newLocation[0]][newLocation[1]] = Tileset.AVATAR;
             rend.renderFrame(worldMap);
         }
+    }
+
+    public static void failState() {
+        System.out.print("failState Detected");
     }
 }
