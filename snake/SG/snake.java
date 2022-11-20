@@ -28,6 +28,8 @@ public class snake {
 
     public int[] move() {
         char c = src.getNextKey();
+        //if the player inputs a direction that takes them off the map we instead return a unique
+        //int[] containing -1 and -1
         switch(c) {
             case 'W':
                 if(y == MAP_MAX_SIZE-1) {

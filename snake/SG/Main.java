@@ -33,6 +33,16 @@ public class Main {
         while(true) {
             int[] newLocation = s.move();
             if(newLocation[0] == -1) {
+                //if the location array has a -1 it means that the player hit a wall, in which case
+                //we enter a fail state that stops the program
+                failState();
+                break;
+            }
+
+            TETile temp = worldMap[newLocation[0]][newLocation[1]];
+            if(temp.equals(Tileset.AVATAR)) {
+                //If the new location is already occupied by an Avatar tile, then it means that
+                //the snake has collided with itself
                 failState();
                 break;
             }
