@@ -32,12 +32,13 @@ public class Main {
 
         //sets up world map
         rend.initialize(MAX_MAP_SIZE + 10, MAX_MAP_SIZE + 10, 5, 5);
+        generateApple();
         rend.renderFrame(worldMap);
+
 
 
         //temporary code to test how the snake moves
         while(true) {
-            generateApple();
             int[] newLocation = s.move();
             if(newLocation[0] == -1) {
                 //if the location array has a -1 it means that the player hit a wall, in which case
@@ -55,6 +56,8 @@ public class Main {
             }
             if(temp.equals(Tileset.FLOWER)) {
                 numApples -= 1;
+                s.snakeSize += 1;
+                generateApple();
             }
 
             System.out.println(newLocation[0] + ", " + newLocation[1]);

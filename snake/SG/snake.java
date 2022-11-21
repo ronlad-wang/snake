@@ -8,7 +8,7 @@ import java.util.Random;
 public class snake {
     public int x;
     public int y;
-    public int snakeSize = 9;
+    public int snakeSize = 1;
     public int MAP_MAX_SIZE = 10;
     public KeyboardInputSource src;
 
